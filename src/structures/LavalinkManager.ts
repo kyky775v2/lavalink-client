@@ -249,6 +249,36 @@ export class LavalinkManager extends EventEmitter {
     }
 
     /**
+     * HERE
+     * <LavalinkManager>#search
+     * <LavalinkManager>#lavaSearch
+     */
+
+    public search(args, nodeIndex:number=0): LavaSearchResult | undefined {
+        var nodes = Object.values(this.nodeManager.nodes);
+        if(nodes.length == 0){
+            throw new Error("No node(s) connected");
+            return;
+        }else if(!nodes[nodeIndex]){
+            throw new Error("Unknown node defined");
+            return;
+        }
+        return nodes[nodeIndex].search(args);
+    }
+
+    public lavaSearch(args, nodeIndex:number=0): LavaSearchResult | undefined {
+        var nodes = Object.values(this.nodeManager.nodes);
+        if(nodes.length == 0){
+            throw new Error("No node(s) connected");
+            return;
+        }else if(!nodes[nodeIndex]){
+            throw new Error("Unknown node defined");
+            return;
+        }
+        return nodes[nodeIndex].lavaSearch(args);
+    }
+
+    /**
      * Get a Player from Lava
      * @param guildId The guildId of the player
      *
