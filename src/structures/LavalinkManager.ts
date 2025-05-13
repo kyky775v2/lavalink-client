@@ -254,7 +254,7 @@ export class LavalinkManager extends EventEmitter {
      * <LavalinkManager>#lavaSearch
      */
 
-    public search(args, nodeIndex:number=0): LavaSearchResult | undefined {
+    public async search(query: SearchQuery, requestUser: unknown, throwOnEmpty: boolean = false, nodeIndex: number = 0): Promise<SearchResult> {
         var nodes = Object.values(this.nodeManager.nodes);
         if(nodes.length == 0){
             throw new Error("No node(s) connected");
@@ -263,7 +263,7 @@ export class LavalinkManager extends EventEmitter {
             throw new Error("Unknown node defined");
             return;
         }
-        return nodes[nodeIndex].search(args);
+        return await nodes[nodeIndex].search(query, requestUser, throwOnEmpty);
     }
 
     public lavaSearch(args, nodeIndex:number=0): LavaSearchResult | undefined {
