@@ -133,7 +133,7 @@ export class Player {
                 ? this.volume * this.LavalinkManager.options.playerOptions.volumeDecrementer
                 : this.volume), 1000), 0));
 
-        this.LavalinkManager.emit("playerCreate", this);
+        // this.LavalinkManager.emit("playerCreate", this);
 
         this.queue = new Queue(this.guildId, {}, new QueueSaver(this.LavalinkManager.options.queueOptions), this.LavalinkManager.options.queueOptions)
     }
