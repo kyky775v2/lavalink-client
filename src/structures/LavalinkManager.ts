@@ -326,6 +326,7 @@ export class LavalinkManager extends EventEmitter {
 
         const newPlayer = new Player(options, this);
         this.players.set(newPlayer.guildId, newPlayer);
+        this.emit('playerCreate', newPlayer);
         return newPlayer;
     }
 
